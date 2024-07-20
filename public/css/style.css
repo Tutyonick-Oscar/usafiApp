@@ -1,0 +1,43 @@
+
+.calendar ul{
+    list-style: none;
+    display: flex; 
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+ }
+ 
+ .calendar ul li{
+     width: calc(100% / 7);
+     margin-top: 25px;
+     position: relative;
+     z-index: 2;
+     text-transform: capitalize;
+ }
+ 
+ #prev:hover::before, #next:hover::before{
+     border-color: #42db80;
+ }
+ .dates li.today{
+     color: #fff;
+     cursor: pointer;
+ }
+ .dates li.today::before{
+     content: '';
+     width: 2rem;
+     height: 2rem;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background: #42db80;
+     /* color: #000; */
+     border-radius: 50%;
+     z-index: -1;
+ 
+ }
+ .dates li.inactive{
+     color: #ccc;
+ }
+ 
+ 
