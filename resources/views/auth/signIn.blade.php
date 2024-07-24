@@ -111,7 +111,7 @@
                     <!-- <input type="avenue" id="avenue" placeholder="Ecrivez votre avenue..." class="pl-4 py-2 bg-green-950 border-2 border-[#ffffff] text-[#ffffff] rounded-md first-letter:capitalize outline-none "> -->
                 </div>
                 <div class="flex justify-between w-full">
-                    <div class=" flex flex-col gap-1 w-[45%]">
+                    {{-- <div class=" flex flex-col gap-1 w-[45%]">
                         <label for="street" class="text-[#ffffff] capitalize">Route</label>
                         <input type="text" name="street" id="street" placeholder="rue" 
                         value="{{old('street')}}" required autofocus autocomplete="street"
@@ -121,7 +121,7 @@
                                 {{$message}}
                             </small>
                         @enderror 
-                    </div>
+                    </div> --}}
                     <div class=" flex flex-col gap-1 w-[45%]">
                         <label for="house" class="text-[#ffffff] capitalize">Maison</label>
                         <input type="text" name="house" id="house" placeholder="maison" 

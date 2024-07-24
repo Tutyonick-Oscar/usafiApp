@@ -1,18 +1,51 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "@tailwindcss/forms": "^0.5.2",
-        "alpinejs": "^3.4.2",
-        "autoprefixer": "^10.4.2",
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.31",
-        "tailwindcss": "^3.1.0",
-        "vite": "^5.0"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.2",
+    "alpinejs": "^3.4.2",
+    "autoprefixer": "^10.4.2",
+    "axios": "^1.6.4",
+    "laravel-vite-plugin": "^1.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.1.0",
+    "vite": "^5.0"
+  },
+  "dependencies": {
+    "@editorjs/editorjs": "^2.30.2",
+    "@editorjs/header": "^2.8.7",
+    "@editorjs/link": "^2.6.2",
+    "@editorjs/list": "^1.9.0",
+    "@editorjs/quote": "^2.6.0",
+    "@editorjs/table": "^2.3.0",
+    "quilljs-markdown": "^1.2.0"
+  },
+  "name": "usafiapp",
+  "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",
+  "version": "1.0.0",
+  "main": "resources/js/app",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tutyonick-Oscar/usafiApp.git"
+  },
+  "keywords": [
+    "environnement",
+    "usafi",
+    "propreté",
+    "déchets",
+    "gestiondesdéchets"
+  ],
+  "author": "Microgels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tutyonick-Oscar/usafiApp/issues"
+  },
+  "homepage": "https://github.com/Tutyonick-Oscar/usafiApp#readme"
 }

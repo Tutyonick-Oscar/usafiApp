@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Collect;
+use App\Rules\outMonth;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CollectRequest extends FormRequest
@@ -27,7 +30,8 @@ class CollectRequest extends FormRequest
         return [
             'quorter' => ['string','exists:pgsql.city_ref.quorters,name'],
             'av' => ['required'],
-            'date' => ['required','date']
+            'date' => ['required','date',new outMonth]
         ];
     }
+    
 }

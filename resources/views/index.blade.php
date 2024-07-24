@@ -1,36 +1,36 @@
 @extends('layouts.header')
 @section('title','Rendre l\'environnement propre | UsafiApp')
 @section('content') 
+@dd($collect)
+{{-- @dd($posts->first()) --}}
    <section class="w-full bg-[#ffffff] rounded-br-[50px] rounded-bl-[50px] pt-20">
     @include('layouts.assets.highNav')
     <div class="w-full flex items-center justify-center overflow-scroll">
+        {{-- displaying posts (the three firsts will be shown) --}}
+        @forelse ($posts as $post)
+        <div class="
+            @if (!$posts->first())
+                hidden
+            @endif
+            w-full flex flex-col gap-3 px-5 py-3 container">
+            <p class="text-[#19243a] text-center">
+                {{$post->content}}  
+            </p>
+            <div>
+                <img src="/storage/{{$post->image}}" class="w-full h-48 object-contain" alt="">
+            </div>
+        </div>
+        @empty
         <div class="w-full flex flex-col gap-3 px-5 py-3 container">
             <p class="text-[#19243a] text-center">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Optio molestiae amet illo culpa veritatis quo numquam   
-            </p>
-            <div>
-                <img src="media/Waste management-amico.png" class="w-full h-48 object-contain" alt="">
-            </div>
-        </div>
-        <div class="w-full flex flex-col gap-3 px-5 py-3 container hidden">
-            <p class="text-[#19243a] text-center">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                 Optio molestiae amet illo culpa veritatis quo numquam    
+                Optio molestiae amet illo culpa veritatis quo numquam    
             </p>
             <div>
                 <img src="media/Waste management-amico (1).png" class="w-full h-48 object-contain" alt="">
             </div>
         </div>
-        <div class="w-full flex flex-col gap-3 px-5 py-3 container hidden">
-            <p class="text-[#19243a] text-center">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                 Optio molestiae amet illo culpa veritatis quo numquam  
-            </p>
-            <div>
-                <img src="media/Waste management-rafiki.png" class="w-full h-48 object-contain" alt="">
-            </div>
-        </div>
+        @endforelse
     </div>
     <div class="flex items-center justify-center gap-2 pb-3">
         <i class="bi bi-circle text-[#19243a] cursor-pointer"></i>

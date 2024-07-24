@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collect;
 use App\Models\Post;
 use App\Models\Zone;
+use App\Services\MatchCollect;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,7 +15,12 @@ class viewController extends Controller
 {
     public function index ()
     {
-        return view('index');
+        $collect = MatchCollect::matches();
+        
+        return view('index',[
+            'posts' => Post::orderBy('created_at','desc')->take(3)->get(),
+            'collect' => $collect,
+        ]);
     }
      
     public function collect ()
