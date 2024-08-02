@@ -1,8 +1,8 @@
 @extends('layouts.header')
 @section('title','Rendre l\'environnement propre | UsafiApp')
 @section('content') 
-@dd($collect)
-{{-- @dd($posts->first()) --}}
+{{-- @dd($collect)
+@dd($posts->first()) --}}
    <section class="w-full bg-[#ffffff] rounded-br-[50px] rounded-bl-[50px] pt-20">
     @include('layouts.assets.highNav')
     <div class="w-full flex items-center justify-center overflow-scroll">
@@ -45,7 +45,7 @@
 
         <div id="question" class="flex flex-col gap-3">
           <p class="text-[#ffffff]">
-            3 personnes de votre entourage ont déjà demandé le service de collecte de déchets. 
+            3 personnes de votre entourage ont demandé le service de collecte hors la date prévue. 
             Voulez-vous aussi demander ce service ?
         </p>
           <div class="flex flex-col gap-4">
@@ -73,7 +73,8 @@
                 </div>
                 <div class="pb-3 w-full justify-start pt-10">
                     <h1 class="font-semibold text-md text-[#ffffff]">
-                        Ete-vous sur de la demande que vous venez de faire? propose-nous la date qui te convient
+                        Vous êtes sur le point de proposer une collecte hors la date prévue <br>
+                        une date qui vous est convennable et une justification courte nous seront utiles pour traiter votre demande
                     </h1>
                 </div>
                 <div>
@@ -103,13 +104,21 @@
                </div>
                 
                 </div>
-                <form action="" class="py-5">
+                <form action="" class="py-5" method="POST">
+                    @csrf
                     <div class="w-full relative">
+                        <input type="hidden" name="date">
                         <div class="w-full flex justify-end">
                             <i class="bi bi-send-fill text-4xl text-[#19243a] mt-1 mr-3 absolute rotate-[45deg]"></i>
                         </div>
-                        <input type="text" placeholder="Explique le pourqoi de ta demande" class="w-full py-3 px-4 outline-none rounded-xl border-2 border-[#ffffff]">
-                    </div>
+                        <input type="text" placeholder="justifiez la demande..." autocomplete="justify" name="justify" autofocus
+                         value="{{old('justify')}}" class="w-full py-3 px-4 outline-none rounded-xl border-2 border-[#ffffff]">
+                        @error('justify')
+                            <small class=" text-sm text-red-600">
+                                {{$message}}
+                            </small>
+                        @enderror
+                        </div>
                 </form>
             </div>
         </div>
@@ -122,7 +131,7 @@
                 <h1 class="font-bold text-[#ffffff]">Kamenge / 11ème Avenue</h1>
             </div>
             <div>
-              <h1 class="font-semibold text-xl text-[#ffffff] capitalize">calendrier</h1>
+              <h1 class="font-semibold text-[#ffffff] capitalize">collecte Août/2024 </h1>
           </div>
           <div class="calendar w-full h-auto px-4 pb-4 bg-transparent rounded-lg shadow-lg">
             <header class="flex items-center justify-between">
@@ -155,7 +164,7 @@
     @include('layouts.assets.downNav')
    </section>
    <!-- SCRIPT -->
-   <script src="asset('js/script.js')"></script>
+   {{-- <script src="{{asset('js/script.js')}}"></script> --}}
    <script src="{{asset('js/home.js')}}"></script>
    <script src="../path/to/flowbite/dist/datepicker.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>

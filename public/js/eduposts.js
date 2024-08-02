@@ -2,11 +2,11 @@
 // import Quill from 'quill'
 // const quillMarkdown = Quill.import('QuillMarkdown');
 // import 'quilljs-markdown/dist/quilljs-markdown-common-style.css'
-import  {Header}  from  '/node_modules/@editorjs/header/dist/index' ; 
-import  {Table}  from  '/node_modules/@editorjs/table/dist/table' ; 
-import  {LinkTool}  from  '/node_modules/@editorjs/link/dist/link' ; 
-import  {Quote}  from  '/node_modules/@editorjs/quote/dist/quote' ; 
-import  {List}  from  '/node_modules/@editorjs/list/dist/list' ; 
+// import  {Header}  from '@editorjs/header'; 
+// import  {Table}  from  '@editorjs/table'; 
+// import  {LinkTool}  from '@editorjs/link'; 
+import  {Quote}  from  './node_modules/@editorjs/quote/dist/quote' ; 
+import  {List}  from  './@editorjs/list/dist/list' ; 
 
 // Récupérer les éléments HTML nécessaires
 const listIcon = document.getElementById('list');

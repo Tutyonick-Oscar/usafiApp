@@ -12,8 +12,7 @@
         </div>
         <label for="quorter" class="block font-bold mb-2">Spécifier le quartier : </label>
         <input type="text" name="quorter" id="quorter" name="quorter" wire:model.blur='choosenQuorter'
-         autocomplete="quorter" value="{{old('quorter')}}"
-        class="border rounded-lg py-2 px-3 w-full" required>
+          class="border rounded-lg py-2 px-3 w-full" autocomplete="quorter" value="{{old('quorter')}}" required >
         <span id="showSelection" class=" text-green-950 text-xl absolute top-10 cursor-pointer right-5">
           >
         </span>
