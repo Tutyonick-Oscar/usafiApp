@@ -1,5 +1,5 @@
 @extends('layouts.header')
-@section('title','recyclage')
+@section('title','Editer recyclage/'.$collecte->quorter.'-'.$collecte->av)
 @section('content')
 <div class="w-full bg-gray-200 text-white" style="font-family: Roboto Mono, monospace;">
     <!-- Sidebar -->
@@ -11,7 +11,6 @@
             @include('admin.assets.header')
             <div class="flex flex-col flex-col-reverse justify-between px-4 w-full  gap-4 ">
                 <!-- Start a Course section -->
-
                 {{-- <div class="w-full flex flex-col gap-1">
                     <div class="px-4">
                         <h1 class="font-bold text-xl text-gray-500">Articles récement publiés</h1>
@@ -51,7 +50,6 @@
                         </div>
                       </div>
                 </div> --}}
-
                     <div class="w-full flex text-green-950">
                       @session('success')
                       <span class="w-[16rem] h-auto absolute px-3 py-1 right-5 text-sm text-green-300 bg-green-600 rounded-md">
@@ -62,56 +60,27 @@
                           <div id="calendar" class="bg-transparent  rounded-lg w-1"></div>
                         </div>
                         <div class="w-full">
-                          <h2 class="text-xl font-bold mb-4">Planifier la collecte</h2>
-                          <form id="recycling-form" method="post" class="w-[70%] bg-white rounded-lg shadow-md p-4">
+                          <h2 class="text-xl font-bold mb-4">
+                            modifier la collecte de {{$collecte->quorter}}/{{$collecte->av}}è avennue
+                            </h2>
+                          <form action="{{route('collecte.updated',$collecte->id)}}" id="recycling-form" method="POST" class="w-[70%] bg-white rounded-lg shadow-md p-4">
                             @csrf
+                            @method('PUT')
                             <livewire:cityOptions>
                             <div class="mb-4">
                               <label for="date" class="block font-bold mb-2">Date du recyclage :</label>
                               <input type="date" id="date" name="date" class="border rounded-lg py-2 px-3 w-full"
-                              autocomplete="date" value="{{old('date')}}" required>
+                              autocomplete="date" value="{{$collecte->date}}" required>
                               @error('date')
                                 <small class=" text-red-600">
                                   {{$message}}
                                 </small>
                               @enderror
                             </div>
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Planifier</button>
-                          </form>
-                          <h2 class="text-xl font-bold mb-4 mt-8">Collecte planifiées</h2>
-                          <table id="recycling-events" class="w-full bg-white rounded-lg shadow-md">
-                            <thead class=" border-gray-300 border-b">
-                              <tr>
-                                <th class="p-2 text-start font-bold">Quartier</th>
-                                <th class="p-2 text-start font-bold">Avenue Prevue</th>
-                                <th class="p-2 text-start font-bold">Date Prevue</th>
-                                <th class="p-2 text-start font-bold flex gap-2 justify-center items-center">Actions</th>
-                              </tr>
-                            </thead>
-                            
-                              @foreach ($collectes as $item)
-                              <tbody class=" mt-5">
-                                <th class="p-2 text-start font-bold"> {{$item->quorter}} </th>
-                                <th class="p-2 text-start font-bold"> {{$item->av}}è avenue</th>
-                                <th class="p-2 text-start font-bold"> {{$item->date}} </th>
-                                <th class=" flex gap-2 justify-center items-center">
-                                    <button type="button" class="bg-green-500 hover:bg-green-950 transition-all text-white font-bold py-1 px-2 rounded">
-                                      <a href="{{route('recyclage.update',$item->id)}}">
-                                        Editer
-                                      </a>
-                                    </button>
-                                    <form action="{{route('collecte.delete',['action'=> 'delete', 'id' => $item->id])}}" method="POST">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button class="bg-red-500 hover:bg-red-700 transition-all text-white font-bold py-1 px-2 rounded">
-                                        Supprimer
-                                      </button>
-                                    </form>
-                                </th>
-                              </tbody>
-                              @endforeach
-                            
-                          </table>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                                Enregister
+                            </button>
+                          </form>                       
                         </div>
                       </div>
                     </div>

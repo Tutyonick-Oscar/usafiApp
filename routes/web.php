@@ -49,10 +49,16 @@ Route::middleware('admin')->group( function (){
     Route::get('/adminpanel/eduPosts',[view::class,'eduPosts'])->name('eduPosts');
     Route::get('/adminpanel/notifications',[view::class,'notifications'])->name('notifications');
     Route::get('/adminpanel/recyclage',[view::class,'recyclage'])->name('recyclage');
+    Route::get('/adminpanel/recyclage/{id}',[view::class,'recyclageUpdate'])->name('recyclage.update');
     Route::get('/adminpanel/users',[view::class,'users'])->name('users');
+    Route::get('/adminpanel/eduPosts/{id}',[view::class,'eduPostupdate'])->name('eduPosts.update');
     /**
      * post routes
      */
     Route::post('/adminpanel/recyclage',[wasteHandler::class,'recycler'])->name('recyclage.post');
+    Route::put('/adminpanel/recyclage/{id}',[wasteHandler::class,'updateCollecte'])->name('collecte.updated');
+    Route::delete('/adminpanel/recyclage/{action}/{id}',[wasteHandler::class,'deleteCollecte'])->name('collecte.delete');
     Route::post('/adminpanel/eduPosts',[wasteHandler::class,'posts'])->name('eduPosts.post');
+    Route::put('/adminpanel/eduPosts/{id}',[wasteHandler::class,'eduPostupdated'])->name('eduPosts.updated');
+    Route::delete('/adminpanel/eduPosts/{action}/{id}',[wasteHandler::class,'deletePost'])->name('eduPosts.delete');
 });

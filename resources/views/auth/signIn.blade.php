@@ -3,7 +3,7 @@
 @section('content')
 <section class="relative w-full flex justify-center items-center  bg-[#073529] ">
    <div class=" w-full lg:w-1/2 flex flex-col items-center justify-between gap-4 p-10">
-        <a href="./connexion.html" class="absolute left-10 top-5 lg:top-10 h-8 w-8">
+        <a href="" class="absolute left-10 top-5 lg:top-10 h-8 w-8">
             <i class="bi bi-arrow-left-circle-fill text-[#ffffff] text-2xl"></i>
         </a>
         <div class="flex flex-col gap-4 mt-3">

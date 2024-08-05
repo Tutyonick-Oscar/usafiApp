@@ -1,22 +1,17 @@
 @extends('layouts.header')
-@section('title','éducations sur l\'assenissement du milieu')
+@section('title','Edit/ '.$post->content)
 @section('content')
 <div class="bg-gray-200 overflow-x-hidden text-white" style="font-family: Roboto Mono, monospace;">
       <!-- Sidebar -->
       <div class="flex h-screen relative">
         @include('admin.assets.side')
-        <!-- Main content -->''
+        <!-- Main content -->
         <div id="main" class="w-5/6 relative z-index-10 translate-x-[20%]">
             <!-- User profile card -->
             @include('admin.assets.header')
             <div class="bg-gray-200 min-h-32 flex flex-col px-4 w-full  gap-4">
-              @session('success')
-                <span class="w-[16rem] h-auto absolute px-3 py-1 right-5 text-sm text-green-300 bg-green-600 rounded-md">
-                  {{session('success')}}
-                </span>
-              @endsession
                 <!-- Start a Course section -->
-                <div class="flex flex-col gap-1">
+                {{-- <div class="flex flex-col gap-1">
                     <div class="px-4">
                         <h1 class="font-bold text-xl text-green-950">Articles récement publiés </h1>
                     </div>
@@ -55,18 +50,8 @@
                                         <img src="/storage/{{$item->image}}" alt="Post Image" class="h-14 w-14 rounded-md">
                                       </td>
                                       <td class="px-4 py-2 flex gap-2 whitespace-nowrap text-right text-sm font-medium">
-                                        <button class="text-white py-1 px-3 rounded-md bg-blue-600 " onclick="editPost(${post.id})">
-                                          <a href="{{route('eduPosts.update',$item->id)}}">
-                                            Modifier
-                                          </a>
-                                        </button>
-                                       <form action="{{route('eduPosts.delete',['action' => 'delete','id' => $item->id])}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                          <button class="text-white py-1 px-3 rounded-md bg-red-600 ">
-                                              Supprimer
-                                          </button>
-                                        </form> 
+                                        <button class="text-white py-1 px-3 rounded-md bg-blue-600 " onclick="editPost(${post.id})">Modifier</button>
+                                        <button class="text-white py-1 px-3 rounded-md bg-red-600 " onclick="deletePost(${post.id})">Supprimer</button>
                                       </td>
                                     </tr>
                                     @endforeach
@@ -81,18 +66,20 @@
                           </div>
                         </div>
                       </div>
-                </div>
+                </div> --}}
 
                   <!-- Recuperation de l'image -->
 
-                <form id="postsForm" action="{{route('eduPosts.post')}}" method="POST" enctype="multipart/form-data">
+                <form id="postsForm" action="{{route('eduPosts.updated',$post->id)}}" method="POST" enctype="multipart/form-data">
                   @csrf
-                  
+                  @method('PUT')
                <div class="flex flex-col gap-4">
                 <div class="bg-white rounded-lg shadow p-6">
-                  <h2 class="text-2xl font-bold mb-4 text-green-950">Créer une Sensibilisation</h2>
-                  <div id="content-editor" class="text-black"></div>
-                  <input type="text" autofocus autocomplete="content" value="{{old('content')}}" name="content" id="content" class="hidden">
+                  <h2 class="text-2xl font-bold mb-4 text-green-950">
+                    Editer la sensibilisation du {{$post->created_at->format('d-m-Y')}}
+                </h2>
+                  <div id="content-editor" class="text-black">{{$post->content}}</div>
+                  <input type="text" autofocus autocomplete="content" value="{{$post->content}}" name="content" id="content" class="hidden">
                   @error('content')
                     <small class=" text-red-600">
                       {{$message}}
@@ -105,6 +92,7 @@
                       <h2 class="text-gray-700 text-xl mb-4">Uploader une image</h2>
                       <div id="preview" class="mb-4">
                         <!-- Prévisualisation de l'image -->
+                        <img src="/storage/{{$post->image}}" class="w-32 h-14 object-cover rounded-lg"/>
                       </div>
                       <input type="file" name="image" id="imageUpload" class="hidden" accept="image/*">
                       <button type="button" onclick="document.getElementById('imageUpload').click()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
@@ -120,7 +108,7 @@
                   </div>
                 </div>
                 <div class="w-full justify-end flex px-8 pb-10">
-                  <button id="submit" type="submit" class="py-2 px-4 rounded-md text-[#ffffff] bg-green-500">Publier</button>
+                  <button id="submit" type="submit" class="py-2 px-4 rounded-md text-[#ffffff] bg-green-500">Enregister</button>
                 </div>
                 </form>
                </div>
@@ -132,8 +120,8 @@
         </div>
     </div>
 </div>  
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-{{--<script src="https://cdn.jsdelivr.net/npm/quilljs-markdown@latest/dist/quilljs-markdown.js"></script> --}}
+ <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/quilljs-markdown@latest/dist/quilljs-markdown.js"></script> --}}
 {{-- <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script> --}}
 <script src="{{asset('js/eduposts.js')}}" type="module"></script>
 @endsection

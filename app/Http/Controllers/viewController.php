@@ -62,6 +62,13 @@ class viewController extends Controller
             'posts'=> Post::paginate(5)
         ]);
     }
+    public function eduPostupdate (int $id)
+    {
+        return view('admin.postupdate',[
+            'str' => Str::class,
+            'post'=> Post::where('id',$id)->firstOrFail(),
+        ]);
+    }
     public function notifications ()
     {
         return view('admin.notifications',[
@@ -75,6 +82,14 @@ class viewController extends Controller
             'str' => Str::class,
             'collectes' => $zone->collects()->get(),
             'carbon' =>Carbon::class
+        ]);
+    }
+    public function recyclageUpdate (int $id)
+    {
+        $zone = Zone::where('name',Auth::user()->zone)->first();
+        return view('admin.recyclageupdate',[
+            'str' => Str::class,
+            'collecte' => Collect::where('id',$id)->first()
         ]);
     }
     public function users ()

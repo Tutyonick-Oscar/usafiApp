@@ -65,136 +65,136 @@ let posts = [
   let currentPage = 1;
   const postsPerPage = 4;
   
-  function createPostRow(post) {
-    return `
-      <tr id="post-${post.id}">
-        <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">${post.id}</td>
-        <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">${post.title}</td>
-        <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
-          <img src="${post.imageUrl}" alt="Post Image" class="h-14 w-14 rounded-md">
-        </td>
-        <td class="px-4 py-2 flex gap-2 whitespace-nowrap text-right text-sm font-medium">
-          <button class="text-white py-1 px-3 rounded-md bg-blue-600 " onclick="editPost(${post.id})">Modifier</button>
-          <button class="text-white py-1 px-3 rounded-md bg-red-600 " onclick="deletePost(${post.id})">Supprimer</button>
-        </td>
-      </tr>
-    `;
-  }
+  // function createPostRow(post) {
+  //   return `
+  //     <tr id="post-${post.id}">
+  //       <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">${post.id}</td>
+  //       <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">${post.title}</td>
+  //       <td class="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
+  //         <img src="${post.imageUrl}" alt="Post Image" class="h-14 w-14 rounded-md">
+  //       </td>
+  //       <td class="px-4 py-2 flex gap-2 whitespace-nowrap text-right text-sm font-medium">
+  //         <button class="text-white py-1 px-3 rounded-md bg-blue-600 " onclick="editPost(${post.id})">Modifier</button>
+  //         <button class="text-white py-1 px-3 rounded-md bg-red-600 " onclick="deletePost(${post.id})">Supprimer</button>
+  //       </td>
+  //     </tr>
+  //   `;
+  // }
   
-  function editPost(postId) {
-    // Logique pour modifier le post
-    const title = prompt('Entrez le nouveau titre du post:', '');
-    if (title) {
-      const postIndex = posts.findIndex(post => post.id === postId);
-      if (postIndex > -1) {
-        posts[postIndex].title = title;
-        renderPosts(currentPage); // Mettre à jour l'affichage du tableau
-      }
-    }
-  }
+  // function editPost(postId) {
+  //   // Logique pour modifier le post
+  //   const title = prompt('Entrez le nouveau titre du post:', '');
+  //   if (title) {
+  //     const postIndex = posts.findIndex(post => post.id === postId);
+  //     if (postIndex > -1) {
+  //       posts[postIndex].title = title;
+  //       renderPosts(currentPage); // Mettre à jour l'affichage du tableau
+  //     }
+  //   }
+  // }
   
-  function deletePost(postId) {
-    // Trouver l'index du post dans le tableau
-    const postIndex = posts.findIndex(post => post.id === postId);
-    // Supprimer le post du tableau
-    if (postIndex > -1) {
-      posts.splice(postIndex, 1);
-      renderPosts(currentPage); // Mettre à jour l'affichage du tableau
-    }
-  }
+  // function deletePost(postId) {
+  //   // Trouver l'index du post dans le tableau
+  //   const postIndex = posts.findIndex(post => post.id === postId);
+  //   // Supprimer le post du tableau
+  //   if (postIndex > -1) {
+  //     posts.splice(postIndex, 1);
+  //     renderPosts(currentPage); // Mettre à jour l'affichage du tableau
+  //   }
+  // }
   
-  function renderPosts(page) {
-    const startIndex = (page - 1) * postsPerPage;
-    const selectedPosts = posts.slice(startIndex, startIndex + postsPerPage);
-    const postsTable = document.getElementById('postsTable');
-    postsTable.innerHTML = selectedPosts.map(createPostRow).join('');
-    renderPagination();
-  }
+  // function renderPosts(page) {
+  //   const startIndex = (page - 1) * postsPerPage;
+  //   const selectedPosts = posts.slice(startIndex, startIndex + postsPerPage);
+  //   const postsTable = document.getElementById('postsTable');
+  //   postsTable.innerHTML = selectedPosts.map(createPostRow).join('');
+  //   renderPagination();
+  // }
   
-  function renderPagination() {
-    const pageCount = Math.ceil(posts.length / postsPerPage);
-    const pagination = document.getElementById('pagination');
-    pagination.innerHTML = '';
-    for (let i = 1; i <= pageCount; i++) {
-      pagination.innerHTML += `<button class="mx-1 px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 ${currentPage === i ? 'bg-gray-400' : ''}" onclick="changePage(${i})">${i}</button>`;
-    }
-  }
+  // function renderPagination() {
+  //   const pageCount = Math.ceil(posts.length / postsPerPage);
+  //   const pagination = document.getElementById('pagination');
+  //   pagination.innerHTML = '';
+  //   for (let i = 1; i <= pageCount; i++) {
+  //     pagination.innerHTML += `<button class="mx-1 px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 ${currentPage === i ? 'bg-gray-400' : ''}" onclick="changePage(${i})">${i}</button>`;
+  //   }
+  // }
   
-  function changePage(page) {
-    currentPage = page;
-    renderPosts(page);
-  }
+  // function changePage(page) {
+  //   currentPage = page;
+  //   renderPosts(page);
+  // }
   
   // Initialiser l'affichage des posts
-  renderPosts(currentPage);
+  //renderPosts(currentPage);
 
   const calendarContainer = document.getElementById('calendar');
   const calendar = document.createElement('div');
   calendar.classList.add('calendar');
   calendarContainer.appendChild(calendar);
 
-  const recyclingEventsTable = document.getElementById('recycling-events');
-  const recyclingEventsBody = recyclingEventsTable.getElementsByTagName('tbody')[0];
+  // const recyclingEventsTable = document.getElementById('recycling-events');
+  // const recyclingEventsBody = recyclingEventsTable.getElementsByTagName('tbody')[0];
 
-  const recyclingEvents = [];
+  // const recyclingEvents = [];
 
-  function addRecyclingEvent(material, date) {
-      const event = { material, date };
-      recyclingEvents.push(event);
-      displayRecyclingEvents();
-  }
+  // function addRecyclingEvent(material, date) {
+  //     const event = { material, date };
+  //     recyclingEvents.push(event);
+  //     displayRecyclingEvents();
+  // }
 
-  function displayRecyclingEvents() {
-      recyclingEventsBody.innerHTML = '';
-      recyclingEvents.forEach((event, index) => {
-          const row = document.createElement('tr');
-          row.classList.add('border-b');
-          const materialCell = document.createElement('td');
-          materialCell.classList.add('py-2', 'px-4');
-          materialCell.textContent = event.material;
-          const dateCell = document.createElement('td');
-          dateCell.classList.add('py-2', 'px-4');
-          dateCell.textContent = event.date;
-          const actionsCell = document.createElement('td');
-          actionsCell.classList.add('py-2', 'px-4');
-          const editButton = document.createElement('button');
-          editButton.classList.add('bg-yellow-500', 'hover:bg-yellow-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded', 'mr-2');
-          editButton.textContent = 'Modifier';
-          editButton.addEventListener('click', () => editRecyclingEvent(index));
-          const deleteButton = document.createElement('button');
-          deleteButton.classList.add('bg-red-500', 'hover:bg-red-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded');
-          deleteButton.textContent = 'Supprimer';
-          deleteButton.addEventListener('click', () => deleteRecyclingEvent(index));
-          actionsCell.appendChild(editButton);
-          actionsCell.appendChild(deleteButton);
-          row.appendChild(materialCell);
-          row.appendChild(dateCell);
-          row.appendChild(actionsCell);
-          recyclingEventsBody.appendChild(row);
-      });
-  }
+  // function displayRecyclingEvents() {
+  //     recyclingEventsBody.innerHTML = '';
+  //     recyclingEvents.forEach((event, index) => {
+  //         const row = document.createElement('tr');
+  //         row.classList.add('border-b');
+  //         const materialCell = document.createElement('td');
+  //         materialCell.classList.add('py-2', 'px-4');
+  //         materialCell.textContent = event.material;
+  //         const dateCell = document.createElement('td');
+  //         dateCell.classList.add('py-2', 'px-4');
+  //         dateCell.textContent = event.date;
+  //         const actionsCell = document.createElement('td');
+  //         actionsCell.classList.add('py-2', 'px-4');
+  //         const editButton = document.createElement('button');
+  //         editButton.classList.add('bg-yellow-500', 'hover:bg-yellow-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded', 'mr-2');
+  //         editButton.textContent = 'Modifier';
+  //         editButton.addEventListener('click', () => editRecyclingEvent(index));
+  //         const deleteButton = document.createElement('button');
+  //         deleteButton.classList.add('bg-red-500', 'hover:bg-red-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded');
+  //         deleteButton.textContent = 'Supprimer';
+  //         deleteButton.addEventListener('click', () => deleteRecyclingEvent(index));
+  //         actionsCell.appendChild(editButton);
+  //         actionsCell.appendChild(deleteButton);
+  //         row.appendChild(materialCell);
+  //         row.appendChild(dateCell);
+  //         row.appendChild(actionsCell);
+  //         recyclingEventsBody.appendChild(row);
+  //     });
+  // }
 
-  function editRecyclingEvent(index) {
-      const event = recyclingEvents[index];
-      document.getElementById('material').value = event.material;
-      document.getElementById('date').value = event.date;
-      deleteRecyclingEvent(index);
-  }
+  // function editRecyclingEvent(index) {
+  //     const event = recyclingEvents[index];
+  //     document.getElementById('material').value = event.material;
+  //     document.getElementById('date').value = event.date;
+  //     deleteRecyclingEvent(index);
+  // }
 
-  function deleteRecyclingEvent(index) {
-      recyclingEvents.splice(index, 1);
-      displayRecyclingEvents();
-  }
+  // function deleteRecyclingEvent(index) {
+  //     recyclingEvents.splice(index, 1);
+  //     displayRecyclingEvents();
+  // }
 
-  const recyclingForm = document.getElementById('recycling-form');
-  recyclingForm.addEventListener('submit', (event) => {
-      //event.preventDefault();
-      // const material = document.getElementById('material').value;
-      //  const date = document.getElementById('date').value;
-      //  console.log(material,date);
-      // addRecyclingEvent(material, date);
-      //recyclingForm.reset();
-  });
+  // const recyclingForm = document.getElementById('recycling-form');
+  // recyclingForm.addEventListener('submit', (event) => {
+  //     //event.preventDefault();
+  //     // const material = document.getElementById('material').value;
+  //     //  const date = document.getElementById('date').value;
+  //     //  console.log(material,date);
+  //     // addRecyclingEvent(material, date);
+  //     //recyclingForm.reset();
+  // });
   
   /**
    * select the input value from array's elements
